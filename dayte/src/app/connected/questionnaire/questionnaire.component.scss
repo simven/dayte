@@ -1,0 +1,16 @@
+@import "~node_modules/bootstrap/scss/_functions.scss";
+@import "~node_modules/bootstrap/scss/_variables.scss";
+@import "~node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "~src/assets/global";
+
+
+
+// ======================= Button size ========================
+.btn {
+  font-size: 0.85rem;
+  @include media-breakpoint-up(xl) {
+    font-size: 1.1rem;
+  }
+}
+// =============================================================
+

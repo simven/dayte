@@ -1,0 +1,57 @@
+<div class="container-fluid d-flex align-items-center justify-content-center">
+    <form class="informations" [formGroup]="informationsForm" (ngSubmit)="onSubmit()">
+        <h1 class="main-title text-center"> Dernière étape ! </h1>
+        <div class="row justify-content-center">
+            <!-- Last name input -->
+            <div class="form-group col-sm-4">
+                <label for="last-name">Nom</label>
+                <input type="text" class="form-control" id="last-name" formControlName="lastName">
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                    <p>* Veuillez saisir un nom valide.</p>
+                </div>
+            </div>
+
+            <!-- First name input -->
+            <div class="form-group col-sm-4">
+                <label for="first-name">Prénom</label>
+                <input type="text" class="form-control" id="first-name" formControlName="firstName">
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                    <p>* Veuillez saisir un prénom valide.</p>
+                </div>
+            </div>
+
+            <!-- Phone input -->
+            <div class="form-group col-sm-4">
+                <label for="tel">Téléphone</label>
+                <input type="text" class="form-control" id="tel" formControlName="tel">
+                <div *ngIf="tel.invalid && (tel.dirty || tel.touched)">
+                    <p>* Veuillez saisir un numéro de téléphone valide, par exemple : 0011223344.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- City input -->
+            <div class="form-group col-sm-4">
+                <label for="city">Ville</label>
+                <input type="text" class="form-control" id="city" formControlName="city">
+                <div *ngIf="city.invalid && (city.dirty || city.touched)">
+                    <p>* Veuillez saisir une ville valide.</p>
+                </div>
+            </div>
+
+            <!-- ZIP input -->
+            <div class="form-group col-sm-4">
+                <label for="zip">Code postale</label>
+                <input type="text" class="form-control zip" id="zip" formControlName="zip">
+                <div *ngIf="zip.invalid && (zip.dirty || zip.touched)">
+                    <p>* Veuillez saisir un code postale valide, par exemple : 12345.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Validate button -->
+        <div class="validate text-center">
+            <button [disabled]="informationsForm.invalid" class="btn btn-lg" type="submit" name="send">C'est parti !</button>
+        </div>
+    </form>
+</div>

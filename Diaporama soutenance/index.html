@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Alexandre Leva, Simon Vennat">
+  <title>Soutenance de projet - Dayte</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/reveal.css">
+  <link rel="icon" href="ressources/icon.png" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2//css/theme/solarized.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.9.2//css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2//css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@3.9.2//lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <figure  style="float:left;margin-left:-180px;width:170px;height:170px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Logo_IUT_Lens.svg/280px-Logo_IUT_Lens.svg.png" />
+      </figure>
+<section id="title-slide">
+  <span style="float:right; margin-top: -260px; margin-right:-150px; width:170px; height:170px;">
+    <img src="ressources/icon.png" style="border: none !important; border-radius: 15px"/>
+  </span>
+
+  <h2 class="title">Soutenance de projet - Dayte</h2>
+  <p class="author">Alexandre Leva, Simon Vennat</p>
+</section>
+
+<section>
+<section id="sommaire" class="title-slide slide level1">
+<h2>SOMMAIRE</h2>
+
+</section>
+<section class="slide level6" style="margin-top: -30px;">
+
+<ol type="1">
+<li><p>Présentation de la mission</p></li>
+<li><p>Environnement et outils utilisés</p></li>
+<li>Fonctionnalités et éléments attendus
+<ol type="1">
+<li>Fonctionnalités et éléments mis en place</li>
+<li>Fonctionnalités et éléments non réalisés</li>
+</ol></li>
+<li><p>Difficultés rencontrées et solutions</p></li>
+<li><p>Répartition des tâches</p></li>
+<li><p>Conception et architecture du projet</p></li>
+<li><p>Démonstration</p></li>
+<li><p>Bilan</p></li>
+</ol>
+</section></section>
+<section>
+<section id="présentation-de-la-mission" class="title-slide slide level1">
+<h2>Présentation de la mission</h2>
+
+</section>
+<section class="slide level6">
+
+<ul>
+<li><p>Réalisation d’une application de rencontre (web et mobile)</p></li>
+<li><p>Alternative aux sites de rencontre existants</p></li>
+<li><p>Application : met en relation deux individus selon un questionnaire (unique)</p></li>
+<li><p>Ces individus n’ont aucun pouvoir de décision sur le choix de leur partenaire</p></li>
+<li><p>Aucun contact virtuel avant la première rencontre physique</p></li>
+</ul>
+</section></section>
+<section>
+<section id="environnement-et-outils-utilisés" class="title-slide slide level1">
+<h2>Environnement et outils utilisés</h2>
+
+</section>
+<section class="slide level6">
+
+<ul>
+<li><p>Framework utilisé : Angular, avec NativeScript Schematics pour la programmation mobile <span style="padding-left: 40px;"><img data-src="ressources/a_n.png" style="width: 40px; padding: 5px; margin-bottom: -15px; border: 2px solid black !important;"/></span></p></li>
+<li><p>SQL : PostgreSQL <span style="padding-left: 40px;"><img data-src="ressources/pgsql.png" style="width: 40px; padding: 5px; margin-bottom: -15px; border: 2px solid black !important;"/></span></p></li>
+<li><p>API REST : PostgREST <span style="padding-left: 40px;"><img data-src="ressources/pgrest.png" style="width: 40px; margin-bottom: -15px; border: 2px solid black !important;"/></span></p></li>
+</ul>
+<p><img data-src="ressources/http.png" style="padding: 10px;"/></p>
+</section>
+
+<section class="slide level6">
+<p>Utilisation d’outils collaboratifs tels que LifeSize, Discord et GitLab</p>
+<p>
+<img data-src="ressources/lifesize.png" style="width: 70px; margin-right: 80px;"/>
+<img data-src="ressources/discord.png" style="width: 70px; margin-right: 80px;"/>
+<img data-src="ressources/GitLab.png" style="width: 155px;"/>
+</p>
+</section>
+
+</section>
+<section>
+<section id="fonctionnalités-et-éléments-attendus" class="title-slide slide level1">
+<h2>Fonctionnalités et éléments attendus</h2>
+
+</section>
+<section id="fonctionnalités-et-éléments-mis-en-place" class="title-slide slide level2">
+<h3>Fonctionnalités et éléments mis en place</h3>
+
+</section>
+<section class="slide level6">
+
+<ul>
+<li><p>Questionnaire lors de l’inscription</p></li>
+<li><p>Matching</p></li>
+<li><p>Base de données</p></li>
+<li><p>API REST</p></li>
+<li><p>Version mobile</p></li>
+<li><p>Design attractif</p></li>
+<li><p>Formulaire de prise de rendez-vous</p></li>
+</ul>
+</section>
+
+<section id="fonctionnalités-et-éléments-non-réalisés" class="title-slide slide level2">
+<h3>Fonctionnalités et éléments non réalisés</h3>
+
+</section>
+<section class="slide level6">
+
+<ul>
+<li><p>Authentification</p></li>
+<li><p>Modification des réponses fournies au questionnaire lors de l’inscription</p></li>
+<li><p>Modification des informations personnelles</p></li>
+<li><p>Système de paiement</p></li>
+<li><p>Inscription et désinscription pour les entreprises partenaires</p></li>
+<li><p>Signalement de compte</p></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="difficultés-rencontrées-et-solutions" class="title-slide slide level1">
+<h2>Difficultés rencontrées et solutions</h2>
+
+</section>
+<section class="slide level6">
+
+<ul>
+<li><p>Méthode POST → ajouter un .subscribe à la requête</p></li>
+<li><p>Une question par page → tableau clé-valeur</p></li>
+<li><p>Gérer les requêtes à la BDD → PostgREST</p></li>
+<li><p>Authentification → non résolu</p></li>
+</ul>
+</section></section>
+
+<section>
+  <section id="répartition-des-tâches" class="title-slide slide level1">
+  <h2>Répartition des tâches</h2>
+  
+  </section>
+  <section class="slide level6">
+  
+  <ul>
+  <li>Alexandre :
+  <ul>
+  <li>MLD</li>
+  <li>Questions et réponses possibles du questionnaire</li>
+  <li>Maquette</li>
+  <li>Textes de la page de présentation</li>
+  <li>Authentification (non fonctionnel)</li>
+  <li>PostgREST puis POST dans la base de données</li>
+  <li>Début matching</li>
+  </ul></li>
+  </ul>
+  </section>
+  <section class="slide level6">
+  
+  <ul>
+  <li>Simon :
+  <ul>
+  <li>MLD</li>
+  <li>Questions et réponses possibles du questionnaire</li>
+  <li>Base de données</li>
+  <li>Structure de l’application</li>
+  <li>Design</li>
+  <li>Développement front-end</li>
+  <li>Programmation mobile</li>
+  </ul></li>
+  </ul>
+  </section></section>
+
+<section>
+<section id="conception-et-architecture-du-projet" class="title-slide slide level1">
+<h2>Conception et architecture du projet</h2>
+
+</section>
+<section class="slide level6">
+
+<p style="margin-top: -20px;">MLD</p>
+<p><img data-src="ressources/MLD.png" style="width: 70%; margin-top: -25px;"/></p>
+</section>
+
+<section id="maquettes" class="title-slide slide level2">
+  <h3>Maquettes</h3>
+</section>
+<section class="slide level6">
+
+<p><img data-src="ressources/maquette/maquette1.png" style="width: 45%;"/></p>
+</section>
+
+<section class="slide level6">
+
+<p><img data-src="ressources/maquette/maquette3.png" style="width: 45%;"/></p>
+</section>
+<section class="slide level6">
+
+<p><img data-src="ressources/maquette/maquette4.png" style="width: 45%;"/></p>
+</section>
+<section class="slide level6">
+
+<p><img data-src="ressources/maquette/maquette5.png" style="width: 45%;"/></p>
+</section></section>
+
+<section id="démonstration" class="title-slide slide level1">
+<h2>Démonstration</h2>
+
+</section>
+
+<section>
+<section id="bilan" class="title-slide slide level1">
+<h2>Bilan</h2>
+
+</section>
+<section class="slide level6">
+
+<ul>
+<li><p>Projet très intéressant et motivant</p></li>
+<li><p>Approfondissement et découverte de nouvelles technologies</p></li>
+<li><p>Montée en compétence</p></li>
+</ul>
+</section></section>
+<section id="merci-de-votre-attention" class="title-slide slide level1">
+<h2>Merci de votre attention !</h2>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@3.9.2//js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://unpkg.com/reveal.js@3.9.2//lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://unpkg.com/reveal.js@3.9.2//plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+@import "~node_modules/bootstrap/scss/_functions.scss";
+@import "~node_modules/bootstrap/scss/_variables.scss";
+@import "~node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "~src/assets/global";
+
+
+
+// ====================== Button size ========================
+.btn {
+  font-size: 1rem;
+  @include media-breakpoint-up(lg) {
+    font-size: 1.5rem;
+  }
+}
+// ===========================================================
+
+
+// ==================== Button position ====================
+.rdv {
+  padding-top: 3rem;
+  .button {
+    padding: 0 30px;
+  }
+}
+// ===========================================================

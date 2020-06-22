@@ -1,0 +1,447 @@
+<div class="text-center">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center survey">
+            <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+                <ng-container *ngFor="let item of tabQuestions;let i = index">
+                    <div [hidden]="item.isHidden">
+                        <h3 class="text-center"> {{item.question}} </h3>
+
+                        <div class="answer">
+                            <!-- Date answers -->
+                            <div *ngIf="item.id == 6">
+                                <div class="d-flex justify-content-center text-center">
+                                    <div class="form-row">
+                                        <ejs-datepicker id=calendar formControlName="{{item.key}}" format='dd/MM/yyyy' locale="fr" [showTodayButton]=false [min]='minDate' [max]='maxDate'></ejs-datepicker>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Size answers -->
+                            <div *ngIf="item.id == 7">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="slider size-slider">
+                                            <ng5-slider [(value)]="sizeSlider.value" [options]="sizeSlider.options" formControlName="{{item.key}}"></ng5-slider>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 text-center size-desc">
+                                        <h4> Je mesure {{sizeSlider.value / 100}} mètres.</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Corpulence answers -->
+                            <div *ngIf="item.id == 13">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input radioC" id="23" type="radio" formControlName="{{item.key}}" value="23">
+                                    <label class="form-check-label" for="23">
+                                        <img src="assets/ressources/questionnaire/corpulence/1.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input radioC" id="24" type="radio" formControlName="{{item.key}}" value="24">
+                                    <label class="form-check-label" for="24">
+                                        <img src="assets/ressources/questionnaire/corpulence/2.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input radioC" id="25" type="radio" formControlName="{{item.key}}" value="25">
+                                    <label class="form-check-label" for="25">
+                                        <img src="assets/ressources/questionnaire/corpulence/3.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input radioC" id="26" type="radio" formControlName="{{item.key}}" value="26">
+                                    <label class="form-check-label" for="26">
+                                        <img src="assets/ressources/questionnaire/corpulence/4.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input radioC" id="223" type="radio" formControlName="{{item.key}}" value="223">
+                                    <label class="form-check-label" for="223">
+                                        <img src="assets/ressources/questionnaire/corpulence/5.png" style="margin-left: -4px">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Age searched answers -->
+                            <div *ngIf="item.id == 19" class="d-flex justify-content-center">
+                                <div class="slider age-search-slider">
+                                    <ng5-slider [(value)]="ageSearchedSlider.minValue" [(highValue)]="ageSearchedSlider.maxValue" [options]="ageSearchedSlider.options" formControlName="{{item.key}}"></ng5-slider>
+                                </div>
+                            </div>
+
+                            <!-- Size searched answers -->
+                            <div *ngIf="item.id == 20" class="d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="slider size-search-slider">
+                                            <ng5-slider [(value)]="sizeSearchedSlider.minValue" [(highValue)]="sizeSearchedSlider.maxValue" [options]="sizeSearchedSlider.options" formControlName="{{item.key}}"></ng5-slider>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 text-center size-desc">
+                                        <h4> Entre {{sizeSearchedSlider.minValue / 100}} et {{sizeSearchedSlider.maxValue / 100}} mètres.</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Distance answers -->
+                            <div *ngIf="item.id == 21">
+                                <div class="slider distance-slider">
+                                    <ng5-slider [(value)]="distanceSlider.value" [options]="distanceSlider.options" formControlName="{{item.key}}"></ng5-slider>
+                                </div>
+                            </div>
+
+                            <!-- Corpulence searched answers -->
+                            <div *ngIf="item.id == 55">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input checkboxC" id="264" type="checkbox" formArrayName="{{item.key}}" value="264" (change)="onCheckboxChange($event, item.key)">
+                                    <label for="264">
+                                        <img src="assets/ressources/questionnaire/corpulence/1.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input checkboxC" id="265" type="checkbox" formArrayName="{{item.key}}" value="265" (change)="onCheckboxChange($event, item.key)">
+                                    <label class="form-check-label" for="265">
+                                        <img src="assets/ressources/questionnaire/corpulence/2.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input checkboxC" id="266" type="checkbox" formArrayName="{{item.key}}" value="266" (change)="onCheckboxChange($event, item.key)">
+                                    <label class="form-check-label" for="266">
+                                        <img src="assets/ressources/questionnaire/corpulence/3.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input checkboxC" id="267" type="checkbox" formArrayName="{{item.key}}" value="267" (change)="onCheckboxChange($event, item.key)">
+                                    <label class="form-check-label" for="267">
+                                        <img src="assets/ressources/questionnaire/corpulence/4.png">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input checkboxC" id="291" type="checkbox" formArrayName="{{item.key}}" value="291" (change)="onCheckboxChange($event, item.key)">
+                                    <label class="form-check-label" for="291">
+                                        <img src="assets/ressources/questionnaire/corpulence/5.png" style="margin-left: -4px">
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input checkboxC" id="268" type="checkbox" formArrayName="{{item.key}}" value="268" (change)="onCheckboxChange($event, item.key)">
+                                    <label class="form-check-label" for="268">
+                                        {{reponsesRedhi[11].libelle}}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Seasons answers -->
+                            <div *ngIf="item.id == 27">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="91" type="radio" formControlName="{{item.key}}" value="91">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="91" title="Été">
+                                        <img class="img" src="assets/ressources/questionnaire/seasons/summer.jpg" alt="Été">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="92" type="radio" formControlName="{{item.key}}" value="92">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="92" title="Automne">
+                                        <img class="img" src="assets/ressources/questionnaire/seasons/automn.jpg" alt="Automne">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="93" type="radio" formControlName="{{item.key}}" value="93">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="93" title="Hiver">
+                                        <img class="img" src="assets/ressources/questionnaire/seasons/winter.jpg" alt="Hiver">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="94" type="radio" formControlName="{{item.key}}" value="94">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="94" title="Printemps">
+                                        <img class="img" src="assets/ressources/questionnaire/seasons/spring.jpg" alt="Printemps">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Atmosphere answers -->
+                            <div *ngIf="item.id == 28">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest threeImages" id="95" type="radio" formControlName="{{item.key}}" value="95">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="95">
+                                        <img class="img" src="assets/ressources/questionnaire/atmosphere/maximalist.jpg" alt="Maximaliste">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest threeImages" id="96" type="radio" formControlName="{{item.key}}" value="96">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="96">
+                                        <img class="img" src="assets/ressources/questionnaire/atmosphere/minimalist.jpg" alt="Minimaliste">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Landscapes answers -->
+                            <div *ngIf="item.id == 35">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="115" type="radio" formControlName="{{item.key}}" value="115">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="115">
+                                        <img class="img" src="assets/ressources/questionnaire/paysages/rural.jpg" alt="Campagne">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="116" type="radio" formControlName="{{item.key}}" value="116">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="116">
+                                        <img class="img" src="assets/ressources/questionnaire/paysages/village.jpeg" alt="Village">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="117" type="radio" formControlName="{{item.key}}" value="117">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="117">
+                                        <img class="img" src="assets/ressources/questionnaire/paysages/small_city.jpg" alt="Ville">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest fourImages" id="118" type="radio" formControlName="{{item.key}}" value="118">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="118">
+                                        <img class="img" src="assets/ressources/questionnaire/paysages/big_city.jpg" alt="Grande ville">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Groups answers -->
+                            <div *ngIf="item.id == 40" class="d-flex justify-content-center">
+                                <div class="slider group-slider">
+                                    <ng5-slider [(value)]="groupSlider.value" [options]="groupSlider.options" formControlName="{{item.key}}"></ng5-slider>
+                                </div>
+                            </div>
+
+                            <!-- Plannings answers -->
+                            <div *ngIf="item.id == 43">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest threeImagesBig" id="246" type="radio" formControlName="{{item.key}}" value="246">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="246">
+                                        <img class="img" src="assets/ressources/questionnaire/planning/empty.png" alt="Planning vide">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest threeImagesBig" id="247" type="radio" formControlName="{{item.key}}" value="247">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="247">
+                                        <img class="img" src="assets/ressources/questionnaire/planning/mid.png" alt="Planning avec peu d'éléments">
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input imageQuest threeImagesBig" id="248" type="radio" formControlName="{{item.key}}" value="248">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="248">
+                                        <img class="img" src="assets/ressources/questionnaire/planning/full.png" alt="Planning avec beaucoup d'éléments">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Hobbies answers -->
+                            <div *ngIf="item.id == 45" class="form-check-inline">
+                                <div class="container">
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="158" type="checkbox" formArrayName="{{item.key}}" value="158" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="158" title="Sport">
+                                            <i class="fas fa-running"></i>
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="162" type="checkbox" formArrayName="{{item.key}}" value="162" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="162" title="Écouter de la musique">
+                                            <i class="fas fa-headphones"></i>
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="163" type="checkbox" formArrayName="{{item.key}}" value="163" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="163" title="Jouer de la musique">
+                                            <i class="fas fa-guitar"></i>
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="164" type="checkbox" formArrayName="{{item.key}}" value="164" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="164" title="Assister à des concerts">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/concert.svg">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="165" type="checkbox" formArrayName="{{item.key}}" value="165" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="165" title="Voitures">
+                                            <i class="fas fa-car"></i>
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="166" type="checkbox" formArrayName="{{item.key}}" value="166" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="166" title="Jeux vidéo">
+                                            <i class="fas fa-gamepad"></i>
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="167" type="checkbox" formArrayName="{{item.key}}" value="167" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="167" title="Lecture">
+                                            <i class="fab fa-readme"></i>
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="168" type="checkbox" formArrayName="{{item.key}}" value="168" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="168" title="Jardinage">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/gardening.svg">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="169" type="checkbox" formArrayName="{{item.key}}" value="169" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="169" title="Bricolage">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/diy.svg" alt="Bricolage">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="170" type="checkbox" formArrayName="{{item.key}}" value="170" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="170" title="Pêche">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/fishing.svg" alt="Pêche">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="171" type="checkbox" formArrayName="{{item.key}}" value="171" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="171" title="Chasse">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/hunting.svg" alt="Chasse">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="172" type="checkbox" formArrayName="{{item.key}}" value="172" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="172" title="Cinéma">
+                                            <i class="fas fa-film"></i>
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="173" type="checkbox" formArrayName="{{item.key}}" value="173" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="173" title="Amis">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/friends.svg" alt="Amis">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="174" type="checkbox" formArrayName="{{item.key}}" value="174" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="174" title="Famille">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/family.svg" alt="Famille">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="175" type="checkbox" formArrayName="{{item.key}}" value="175" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="175" title="Cuisine">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/cooking.svg" alt="Cuisine">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="176" type="checkbox" formArrayName="{{item.key}}" value="176" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="176" title="Théâtre">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/theatre.svg" alt="Théâtre">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="177" type="checkbox" formArrayName="{{item.key}}" value="177" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="177" title="Science & nouvelles technologies">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/technology.svg" alt="Science & nouvelles technologies">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="178" type="checkbox" formArrayName="{{item.key}}" value="178" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="178" title="Art">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/art.svg" alt="Art">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox checkbox-img" id="179" type="checkbox" formArrayName="{{item.key}}" value="179" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="179" title="Soirées / sorties">
+                                            <img class="hobby-icon" src="assets/ressources/questionnaire/hobbies/party.svg" alt="Soirées / sorties">
+                                        </label>
+                                    </span>
+
+                                    <span class="block-checkbox">
+                                        <input class="form-check-input checkbox" id="245" type="checkbox" formArrayName="{{item.key}}" value="245" (change)="onCheckboxChange($event, item.key)">
+                                        <label class="form-check-label" for="245" title="Photographie">
+                                            <i class="fas fa-camera"></i>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <!-- Classics crippling answers -->
+                            <span *ngFor="let reponseRedhi of reponsesRedhi">
+                                <!-- Radio inputs -->
+                                <div *ngIf="reponseRedhi.id_question === item.id-51 && radio.includes(item.id)" class="form-check-inline block-radio">
+                                    <input class="form-check-input radio" id="{{reponseRedhi.id_reponse}}" type="radio" formControlName="{{item.key}}" value="{{reponseRedhi.id_reponse}}">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="{{reponseRedhi.id_reponse}}">{{reponseRedhi.libelle}}</label>
+                                </div>
+                                <!-- Checkbox inputs -->
+                                <div *ngIf="reponseRedhi.id_question === item.id-51 && checkbox.includes(item.id)" class="form-check-inline block-checkbox">
+                                    <input class="form-check-input checkbox" id="{{reponseRedhi.id_reponse}}" type="checkbox" formArrayName="{{item.key}}" value="{{reponseRedhi.id_reponse}}" (change)="onCheckboxChange($event, item.key)">
+                                    <label class="form-check-label" for="{{reponseRedhi.id_reponse}}">{{reponseRedhi.libelle}}</label>
+                                </div>
+                            </span>
+
+                            <!-- Classics answers -->
+                            <span *ngFor="let reponse of reponses">
+                                <!-- Radio inputs -->
+                                <div *ngIf="reponse.id_question === item.id && radio.includes(item.id)" class="form-check-inline block-radio">
+                                    <input class="form-check-input radio" id="{{reponse.id_reponse}}" type="radio" formControlName="{{item.key}}" value="{{reponse.id_reponse}}">
+                                    <label class="form-check-label d-inline-flex align-items-center justify-content-center" for="{{reponse.id_reponse}}">{{reponse.libelle}}</label>
+                                </div>
+                                <!-- Checkbox inputs -->
+                                <div *ngIf="reponse.id_question === item.id && checkbox.includes(item.id)" class="form-check-inline block-checkbox">
+                                    <input class="form-check-input checkbox" id="{{reponse.id_reponse}}" type="checkbox" formArrayName="{{item.key}}" value="{{reponse.id_reponse}}" (change)="onCheckboxChange($event, item.key)">
+                                    <label class="form-check-label" for="{{reponse.id_reponse}}">{{reponse.libelle}}</label>
+                                </div>
+                            </span>
+                        </div>
+
+                        <!-- Navigation buttons -->
+                        <div class="d-flex justify-content-center">
+                            <!-- Previous button for all questions except the first => hide the current question & display the previous question -->
+                            <span *ngIf="item.id != 6" class="navigate"><a class="btn btn-lg" role="button" (click)="tabQuestions[i].isHidden = true;tabQuestions[i - 1] ?tabQuestions[i - 1].isHidden = false : false; onPrevious()">Précédent</a></span>
+                            <!-- Next button when answer is valid, for all questions except the last => hide the current question & display the next question -->
+                            <div *ngIf="questionForm.get(item.key).valid">
+                                <span *ngIf="item.id !== 46" class="navigate"><a class="btn btn-lg" role="button" (click)="tabQuestions[i].isHidden = true;tabQuestions[i + 1] ?tabQuestions[i + 1].isHidden = false : false; onNext(item.id)">Suivant</a></span>
+                            </div>
+
+                            <!-- Continue button for the last question (enabled only if 'questionForm' is valid -->
+                            <span *ngIf="item.id == 46" class="navigate"><button [disabled]="questionForm.invalid" class="btn btn-lg" type="submit" name="send" (click)="onNext(item.id)">Continuer</button></span>
+                        </div>
+
+                    </div>
+                </ng-container>
+            </form>
+        </div>
+    </div>
+</div>

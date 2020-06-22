@@ -1,0 +1,14 @@
+<!-- Questionnaire (one page), objective: modify the answers given during registration -->
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let question of questions" class="container"(click)="onSelectedQuestion(question)" [class.selected]="question === selectedQuestion">
+        <h3>{{question.id_question}} - {{question.libelle}}</h3>
+        <div *ngFor="let reponse of reponses">
+            <ul *ngIf="reponse.id_question === question.id_question">
+                <input type="checkbox" (change)="onCheckboxChange($event)" value="{{reponse.id_reponse}}">
+                <label class="container">{{reponse.libelle}}</label>
+            </ul>
+        </div>
+        <button class="btn btn-xl" type="submit" name="send">Continuer</button>
+        <br><br><br>
+    </div>
+</form>

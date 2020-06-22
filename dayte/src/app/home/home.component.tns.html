@@ -1,0 +1,115 @@
+<GridLayout class="page" [class.popupOpen]="popupOpen">
+    <GridLayout class="content">
+        <Label verticalAlignment="top" class="h1 text-center title" textWrap="true" text="Dayte"></Label>
+
+        <StackLayout class="connection">
+            <Label class="h2 text-center text-white" textWrap="true" text="Connexion"></Label>
+            <form [formGroup]="loginForm">
+                <StackLayout class="input-field">
+                    <TextField class="input-connection" required hint="Adresse email" formControlName="emailLogin" keyboardType="email" autocorrect="false" autocapitalizationType="none"></TextField>
+                    <StackLayout *ngIf="emailLogin.invalid && (emailLogin.dirty || emailLogin.touched)">
+                        <Label class="error" text="* Veuillez entrer un adresse email valide." textWrap="true"></Label>
+                    </StackLayout>
+                </StackLayout>
+
+
+
+                <StackLayout orientation="horizontal" class="input-field">
+                    <TextField class="input-connection" style="width: 75%" required [secure]="securePassword" hint="Mot de passe" formControlName="passwordLogin"></TextField>
+                    <StackLayout *ngIf="securePassword; else see">
+                        <Label class="fas text-white eye" text="&#xf06e;" (tap)="seePassword()"></Label>
+                    </StackLayout>
+                    <ng-template #see>
+                        <Label class="fas text-white eye" text="&#xf070;" (tap)="seePassword()"></Label>
+                    </ng-template>
+                </StackLayout>
+
+
+                <Button [isEnabled]="loginForm.valid" class="btn btn-login" text="Connexion" (tap)="onSubmitLogin()"></Button>
+            </form>
+        </StackLayout>
+
+
+        <StackLayout class="button-create-account text-center" verticalAlignment="bottom">
+            <Label class="text-white" text="Vous n'avez pas encore de compte ?" (tap)="signUp()" textWrap="true"></Label>
+            <Button class="btn" text="S'inscrire" (tap)="signUp()"></Button>
+        </StackLayout>
+    </GridLayout>
+
+
+
+    <AbsoluteLayout class="popup-wrapper" horizontalAlignment="center">
+        <GridLayout class="register-screen">
+            <StackLayout class="register">
+                <Label verticalAlignment="top" class="h2 text-center" textWrap="true" text="Inscription"></Label>
+                <ScrollView orientation="vertical">
+                    <StackLayout class="register-form">
+                        <form [formGroup]="registerForm">
+                            <StackLayout>
+                                <Label class="h3 text-center" text="Je suis"></Label>
+                                <StackLayout orientation="horizontal" horizontalAlignment="center">
+                                    <StackLayout *ngFor="let option of genderRadio">
+                                        <StackLayout orientation="horizontal">
+                                            <Label  [class.selected]="option.selected" class="fas people" [text]='option.text' textWrap="true"  (tap)="changeRadio(option, genderRadio)"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <Label class="h3 text-center" text="Je cherche"></Label>
+                                <StackLayout orientation="horizontal" horizontalAlignment="center">
+                                    <StackLayout *ngFor="let option of genderSearchRadio">
+                                        <StackLayout orientation="horizontal">
+                                            <Label [class.selected]="option.selected" class="fas people" [text]='option.text' textWrap="true" (tap)="changeRadio(option, genderSearchRadio)"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+
+
+                            <StackLayout class="input-field">
+                                <TextField class="input-register" required hint="Adresse email" formControlName="email" keyboardType="email" autocorrect="false" autocapitalizationType="none"></TextField>
+                                <StackLayout *ngIf="email.invalid && (email.dirty || email.touched)">
+                                    <Label class="error" text="* Veuillez entrer un adresse email valide." textWrap="true"></Label>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout formGroupName="pwd">
+                                <StackLayout class="input-field" orientation="horizontal">
+                                    <TextField class="input-register" style="width: 68%" required [secure]="securePassword" hint="Mot de passe" formControlName="password" autocorrect="false"></TextField>
+
+                                    <StackLayout *ngIf="securePassword; else seeR">
+                                        <Label class="fas eye" text="&#xf06e;" (tap)="seePassword()"></Label>
+                                    </StackLayout>
+                                    <ng-template #seeR>
+                                        <Label class="fas eye" text="&#xf070;" (tap)="seePassword()"></Label>
+                                    </ng-template>
+
+                                    <StackLayout *ngIf="password.invalid && (password.dirty || password.touched)">
+                                        <Label class="error" text="* Le mot de passe doit contenir au moins 8 caractères." textWrap="true"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+
+
+                                <StackLayout class="input-field">
+                                    <TextField class="input-register" required [secure]="securePassword" hint="Confirmer le mot de passe" formControlName="confirmPassword" autocorrect="false"></TextField>
+
+                                    <StackLayout *ngIf="password.value != confirmPassword.value && (confirmPassword.dirty || confirmPassword.touched)">
+                                        <Label class="error" text="* Les mots de passe ne correspondent pas." textWrap="true"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+
+
+                            <DockLayout class="buttons-register" verticalAlignment="bottom" horizontalAlignement="center" stretchLastChild="true">
+                                <Button class="btn" text="Retour" dock="left" (tap)="closePopup()"></Button>
+                                <Button class="btn" text="Continuer" [isEnabled]="registerForm.valid" (tap)="onSubmitSignup()"></Button>
+                            </DockLayout>
+                        </form>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </GridLayout>
+    </AbsoluteLayout>
+</GridLayout>

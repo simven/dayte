@@ -1,0 +1,52 @@
+
+// VARIABLES \\
+$light-main: rgba(246, 87, 125, 0.84);
+$main: #E3446C;
+$red-error: #e21a17;
+$red-error-text: #cb0e0b;
+$white: #ffffff;
+$grey-white: #e0e0e0;
+$light-grey: #f2f2f2;
+$grey: #cccccc;
+$real-grey: #757578;
+$dark-blue: #25304b;
+$dark: #353A3F;
+$light-black: #222529;
+
+
+// ===================== Style des boutons =====================
+.btn {
+  font-family: "Montserrat", sans-serif;
+  background-color: $light-main !important;
+  color: $white !important;
+  box-shadow: none;
+  &:hover, &:active {
+    background-color: $main !important;
+    color: $dark !important;
+    box-shadow: none;
+  }
+  &:before {
+    background-color: $main !important;
+    color: $dark !important;
+    box-shadow: none;
+  }
+}
+// ===========================================================
+
+
+.current-top {
+  color: $dark;
+  font-size: 2rem;
+  opacity: 0.6;
+  &:hover {
+    color: $dark;
+    text-decoration: none;
+  }
+  @include media-breakpoint-up(lg) {
+    transition: all 0.3s ease;
+    &:hover {
+      color: $main;
+      opacity: 1;
+    }
+  }
+}

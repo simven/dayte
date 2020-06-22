@@ -1,0 +1,372 @@
+@import "~node_modules/bootstrap/scss/_functions.scss";
+@import "~node_modules/bootstrap/scss/_variables.scss";
+@import "~node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "~src/assets/global";
+
+
+
+// ========================= GLOBAL ==========================
+.container-fluid {
+  width: 90vw;
+  @include media-breakpoint-up(md) {
+    width: 80vw;
+  }
+}
+
+.survey {
+  padding-top: 1rem;
+  @include media-breakpoint-up(lg) {
+    padding-top: 4rem;
+  }
+}
+
+.answer {
+  padding: 2rem 0;
+}
+
+.row {
+  width: 100vw;
+  @include media-breakpoint-up(lg) {
+    margin: 0;
+    width: 40vw;
+  }
+}
+// ===========================================================
+
+
+
+// ================== Radio button design ====================
+.radio + label, .radioC + label {
+  border: 2px solid $main;
+  background-color: $light-grey;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  min-width: 100px;
+  max-width: 200px;
+  height: 100%;
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: all 200ms linear;
+  cursor: pointer;
+}
+
+.radio:checked + label, .radioC:checked + label {
+  background: linear-gradient(to right bottom, #d297a5, $light-main);
+  color: $white;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.radioC + label {
+  width: 140px;
+  height: 230px;
+}
+
+.block-radio {
+  padding: 0.25rem 0.8rem;
+  @include media-breakpoint-up(md) {
+    padding: 0.5rem 1rem;
+  }
+}
+// ===========================================================
+
+
+
+// ================= Checkbox button design ==================
+.checkbox + label, .checkboxC + label {
+  display: inline-block;
+  border: 2px solid rgba(139, 139, 139, 0.3);
+  color: #959595;
+  border-radius: 25px;
+  margin: 3px 0;
+  user-select: none;
+  transition: all .2s;
+  padding: 8px 12px;
+  cursor: pointer;
+
+  &::before {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+  }
+}
+
+.checkbox, .checkboxC {
+  &:checked + label {
+    border: 2px solid $light-main;
+    background: linear-gradient(to right bottom, #d297a5, $light-main);
+    color: $white;
+    transition: all .2s;
+  }
+
+  &:checked + label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+  }
+
+  &:focus + label {
+    border: 2px solid $light-main;
+  }
+}
+
+.checkboxC + label {
+  img {
+    width: 100px;
+    height: 164px;
+    padding-left: 5px;
+  }
+}
+
+// space between checkboxes
+.block-checkbox {
+  padding: 0.2rem 0.4rem;
+}
+// ===========================================================
+
+
+
+// =============== Size slider description ===================
+.size-desc {
+  top: 0;
+  margin: auto;
+  padding: 1.5rem 0 0;
+  @include media-breakpoint-up(lg) {
+    padding: 0;
+  }
+}
+
+
+
+// ===================== Image questions =====================
+.imageQuest + label {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  width: 285px;
+  height: 220px;
+
+  .img {
+    border-radius: 20px;
+    opacity: 0.7;
+    transition: all 0.25s ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.imageQuest:checked + label {
+  transition: all 0.2s ease;
+  .img {
+    opacity: 1;
+    border: 5px solid $main;
+  }
+}
+
+// Images atmospheres question
+.threeImages + label {
+  @include media-breakpoint-up(md) {
+    width: 350px;
+    height: 270px;
+  }
+}
+
+// Images plannings question
+.threeImagesBig + label {
+  .img {
+    border: 1px solid $dark;
+  }
+  @include media-breakpoint-up(md) {
+    width: 415px;
+    height: 320px;
+  }
+}
+
+// Images landscapes question
+.fourImages + label {
+  @include media-breakpoint-up(md) {
+    width: 363px;
+    height: 280px !important;
+  }
+}
+// ===========================================================
+
+
+
+// ==================== Slider questions =====================
+::ng-deep {
+  // global
+  .slider {
+    .ng5-slider {
+      .ng5-slider-bar {
+        background: $grey-white;
+      }
+
+      .ng5-slider-tick-legend {
+        font-family: 'Roboto', sans-serif;
+        color: $dark-blue;
+        letter-spacing: .025rem;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  // size slider
+  .size-slider {
+    .ng5-slider {
+      .ng5-slider-pointer {
+        height: 5px;
+        background-color: $light-main;
+        outline: 0;
+      }
+
+      .ng5-slider-pointer:after {
+        display: none;
+      }
+
+      .ng5-slider-limit {
+        font-weight: bold;
+      }
+    }
+    height: 50vh;
+    padding-left: 8rem;
+    text-align: left !important;
+    @include media-breakpoint-up(md) {
+      padding-left: 0;
+    }
+  }
+
+  // group slider
+  .group-slider, .distance-slider {
+    .ng5-slider {
+      .ng5-slider-pointer {
+        background-color: $light-main;
+        outline: 0;
+      }
+
+      .ng5-slider-pointer:after {
+        background-color: $grey-white !important;
+      }
+
+      .ng5-slider-tick {
+        background: $main;
+      }
+    }
+    padding-bottom: 5rem;
+    width: 90vw;
+    @include media-breakpoint-up(md) {
+      width: 50vw;
+    }
+  }
+
+  // age searched slider
+  .age-search-slider {
+    .ng5-slider {
+      .ng5-slider-pointer {
+        width: 5px;
+        background-color: $light-main;
+        outline: 0;
+      }
+
+      .ng5-slider-selection {
+        background: $light-main ;
+      }
+
+      .ng5-slider-pointer:after {
+        display: none;
+      }
+
+      .ng5-slider-tick {
+        background: $main;
+      }
+
+      .ng5-slider-limit {
+        font-weight: bold;
+      }
+    }
+    padding-bottom: 5rem;
+    width: 90vw;
+    @include media-breakpoint-up(md) {
+      width: 50vw;
+    }
+  }
+
+  // size searched slider
+  .size-search-slider {
+    .ng5-slider {
+      .ng5-slider-pointer {
+        height: 5px;
+        background-color: $light-main;
+        outline: 0;
+      }
+
+      .ng5-slider-selection {
+        background: $light-main ;
+      }
+
+      .ng5-slider-pointer:after {
+        display: none;
+      }
+
+      .ng5-slider-limit {
+        font-weight: bold;
+      }
+    }
+
+    height: 50vh;
+    padding-left: 8rem;
+    text-align: left !important;
+    @include media-breakpoint-up(md) {
+      padding-left: 0;
+    }
+  }
+
+  // distance slider
+  .distance-slider {
+    .ng5-slider {
+      .ng5-slider-pointer:after {
+        background-color: $real-grey !important;
+      }
+
+      .ng5-slider-limit {
+        font-weight: bold;
+      }
+    }
+  }
+}
+// ===========================================================
+
+
+
+// ==================== Hobbies question =====================
+// Images for hobbies
+.checkbox-img + label {
+  padding-top: 27px;
+}
+
+.hobby-icon {
+  margin-top: -28px;
+  width: 45px;
+}
+
+
+// Icon (font awesome) for hobbies
+i {
+  color: $black;
+  font-size: 45px;
+}
+// ===========================================================
+
+
+
+// == Navigate button : 'Précédent', 'Suivant', 'Continuer' ==
+.navigate {
+  padding: 0 30px 5rem;
+}

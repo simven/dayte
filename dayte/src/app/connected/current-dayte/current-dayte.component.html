@@ -1,0 +1,54 @@
+<section>
+    <div class="container">
+        <form method="POST" class="" [formGroup]="rdv" (ngSubmit)="onSubmit()">
+            <div class="row">
+
+                <!-- Date picker -->
+                <div class="col-md-4 text-center">
+                    <h1> La date </h1>
+                    <div class="dayte-element">
+                        <div class="form-group">
+                            <ejs-datepicker id=calendar formControlName="date" format='dd/MM/yyyy' locale="fr" [min]='minDate' [max]='maxDate'></ejs-datepicker>
+                        </div>
+                        <div *ngIf="date.invalid && (date.dirty || date.touched)">
+                            <p>* Veuillez saisir une date correcte.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clock picker -->
+                <div class="col-md-4 text-center">
+                    <h1> L'heure </h1>
+                    <div class="dayte-element">
+                        <div class="form-group">
+                            <ejs-timepicker formControlName="clock" locale="fr"></ejs-timepicker>
+                        </div>
+                        <div *ngIf="clock.invalid && (clock.dirty || clock.touched)">
+                            <p>* Veuillez saisir une heure correcte.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Place input -->
+                <div class="col-md-4 text-center">
+                    <h1> Le lieu </h1>
+                    <div class="dayte-element e-float-input">
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <input formControlName="place">
+                                <span class="e-float-line"></span>
+                            </div>
+                        </div>
+                        <div *ngIf="place.invalid && (place.dirty || place.touched)">
+                            <p>* Veuillez saisir un lieu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button [disabled]="rdv.invalid" class="btn btn-xl" type="submit" name="send"> Confirmer </button>
+            </div>
+        </form>
+    </div>
+</section>

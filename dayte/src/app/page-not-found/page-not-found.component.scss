@@ -1,0 +1,42 @@
+@import "~node_modules/bootstrap/scss/_functions.scss";
+@import "~node_modules/bootstrap/scss/_variables.scss";
+@import "~node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "~src/assets/global";
+
+
+// ========================= GLOBAL ==========================
+h1 {
+  font-size: 7rem;
+  font-weight: 100;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 100;
+  padding: 1rem 0 3rem;
+}
+
+.content {
+  position: relative;
+  height: 85%;
+  top: 15%;
+}
+// ===========================================================
+
+
+
+// ====================== Heart design =======================
+.fa-heart-broken {
+  color: $main;
+  font-size: 6rem;
+}
+
+
+
+// ======================= Button size =======================
+.btn {
+  font-size: 1.3rem;
+  @include media-breakpoint-up(lg) {
+    font-size: 1.7rem;
+  }
+}

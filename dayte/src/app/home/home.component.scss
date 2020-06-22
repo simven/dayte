@@ -1,0 +1,414 @@
+@import "~node_modules/bootstrap/scss/_functions.scss";
+@import "~node_modules/bootstrap/scss/_variables.scss";
+@import "~node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "~src/assets/global";
+
+
+
+// ========================= GLOBAL =========================
+.content {
+  padding-top: 5rem;
+  @include media-breakpoint-up(md){
+    background-color: white;
+    position: relative;
+  }
+}
+
+.split {
+  @include media-breakpoint-up(lg){
+    margin-top: 100vh;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+  }
+}
+
+.container {
+  width: 80vw;
+}
+// ===========================================================
+
+
+
+// ===================== Top page button =====================
+#scrollUp {
+  position: fixed;
+  right: 15px;
+  bottom: 50px;
+  a:active {
+    color: $main;
+    opacity: 1;
+  }
+  @include media-breakpoint-up(lg){
+    right: 70px;
+    bottom: 90px;
+  }
+}
+// ===========================================================
+
+
+
+// ====================== Button design ======================
+.btn {
+  font-size: 0.85rem;
+  @include media-breakpoint-up(xl) {
+    font-size: 1.1rem;
+  }
+}
+// ===========================================================
+
+
+
+// ========================= NAVBAR ==========================
+#mainNav {
+  box-shadow: $box-shadow;
+  background-color: $dark;
+  transition: background-color 0.3s ease;
+  .navbar-brand {
+    color: $main;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        color: $white;
+        font-family: "Montserrat", sans-serif;
+        padding: 0.75rem 0;
+        &:hover, &:active {
+          color: $main;
+        }
+        &.active {
+          color: $main !important;
+        }
+      }
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    box-shadow: none;
+    background-color: transparent;
+    .navbar-brand {
+      transition: all 0.3s;
+      font-size: 2.5rem;
+    }
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          padding: 0 1rem;
+          font-size: 0.964rem;
+        }
+        &:last-child {
+          .nav-link {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+    &.navbar-scrolled {
+      box-shadow: $box-shadow;
+      background-color: $dark;
+      .navbar-brand {
+        font-size: 1.39rem;
+      }
+    }
+  }
+  @include media-breakpoint-up(xl) {
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          font-size: 1.04rem;
+        }
+      }
+    }
+    &.navbar-scrolled {
+      .navbar-brand {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+// ===========================================================
+
+
+
+// ============= "s'inscrire" button in navbar ===============
+.logButton {
+  .registerButton {
+    margin-right: 0.3rem;
+
+    @include media-breakpoint-up(xl) {
+      margin-right: 0.65rem;
+    }
+  }
+}
+// ===========================================================
+
+
+// ========== "home page/top page" link in navbar ============
+#home {
+  @include media-breakpoint-up(lg) {
+    margin-left: 0;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-left: 3rem;
+  }
+}
+// ===========================================================
+
+
+// ============ Different links of the one page ==============
+.part {
+  @include media-breakpoint-up(lg) {
+    margin-left: 0;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-left: 2rem;
+  }
+}
+// ===========================================================
+
+
+// =============== Sign in button in navbar ==================
+.logButton {
+  @include media-breakpoint-up(lg) {
+    margin-right: -18px;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-right: -10px;
+  }
+}
+// ===========================================================
+
+
+// Burger menu
+.fa-bars {
+  color: $main;
+}
+
+
+
+// HEADER \\
+
+// ==================== GLOBAL HEADER =======================
+.popupBackground {
+  position:absolute;
+  left: 0;
+  top: 0;
+  width:100%;
+  height:100%;
+
+  .ecranLogin {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 80vw;
+    height: 370px;
+    background-color: $white;
+    border-radius: 10px;
+    padding: 30px 40px;
+    border: 0.5px solid $main;
+    box-shadow: 0 0 7px 1px $main;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .head {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: fixed;
+
+    background: linear-gradient(to bottom, rgba(51, 51, 51, 0.7) 0%, rgba(51, 51, 51, 0.7) 100%), url("../../assets/ressources/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+  }
+
+  .people {
+    font-size: 4rem;
+    &:hover{
+      color: $dark;
+    }
+  }
+
+  .fa-restroom:hover {
+    color: $dark;
+  }
+
+  .ecran {
+    border-radius: 10px;
+    background-color: $white;
+    opacity: 0.85;
+    box-shadow: 10px 5px 5px;
+    padding: 15px 40px;
+  }
+
+  .popupBackground {
+    background-color:rgba(0,0,0,.75);
+
+    .ecranLogin {
+      width: 40vw;
+      height: 380px;
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .popupBackground {
+    .ecranLogin {
+      width: 30vw;
+      height: 380px;
+    }
+  }
+}
+// ===========================================================
+
+
+// ======================= Input design ======================
+form {
+  font-family: 'Roboto', sans-serif;
+  p {
+    font-size: 0.8rem;
+    color: $red-error-text;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+}
+
+.signup .form-group {
+  position: relative;
+  input {  //maybe modif
+    background-color: $light-grey !important;
+    border: none;
+    height: 50px;
+    filter: none;
+    &:focus {
+      box-shadow: none;
+      border: 2px solid $main;
+      transition: none;
+      background-color: $white;
+      letter-spacing: .025rem;
+    }
+  }
+
+  label {
+    color: #6c757d;
+    position: absolute;
+    transform-origin: top left;
+    margin-left: 10px;
+    transform: translate(0, 12px) scale(1);
+    transition: all .1s ease-in-out;
+    cursor: text;
+  }
+
+  &.active label {
+    transform: translate(0, -10px) scale(.75);
+    background-color: $white;
+    padding: 0 8px;
+    color: $main;
+  }
+}
+
+.login .form-group {
+  input {
+    background-color: $light-grey !important;
+    border: none;
+    height: 50px;
+    filter: none;
+    &:focus {
+      box-shadow: none;
+      border: 2px solid $main;
+      transition: none;
+      background-color: $white;
+      letter-spacing: .025rem;
+    }
+  }
+}
+
+.errorInput {     // Input error design
+  border: 2px solid $red !important;
+  box-shadow: 0 0 7px -2px $red;
+}
+// ============================================================
+
+
+// ================== Gender choice sign up ===================
+.circle {
+  color: $main;
+}
+
+input[type="radio"]:checked + label {
+  .people, .fa-restroom {
+    color: $dark;
+  }
+}
+
+.sexeR {
+  padding: 10px 0;
+}
+// =============================================================
+
+
+// ======================= Sign in form ========================
+.loginForm {
+  padding: 1.4rem 0 0;
+
+  @include media-breakpoint-up(lg) {
+    padding: 1.8rem 0 0.6rem;
+  }
+  @include media-breakpoint-up(xl) {
+    padding: 2rem 0 0.8rem;
+  }
+}
+
+.loginFormButtons {
+  padding: 1.2rem 0 0;
+
+  @include media-breakpoint-up(lg) {
+    padding: 1.3rem 0 0;
+  }
+  @include media-breakpoint-up(xl) {
+    padding: 1.5rem 0 0;
+  }
+}
+
+.forgotPwd {
+  color: $dark-blue;
+  font-size: 0.75rem;
+  &:hover {
+    color: $main;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 0.9rem;
+  }
+}
+
+.back {
+  padding-bottom: 1rem;
+}
+// ============================================================
+
+
+// ======================Eye to see password===================
+#pwd .form-group {
+  display: flex;
+}
+
+#pwd i {
+  margin: 2.45px 0 0 -50px;
+  padding: 12px;
+  border-radius: 100%;
+  cursor: pointer;
+  &:active {
+    background-color: $grey-white;
+  }
+  @include media-breakpoint-up(lg){
+    &:hover {
+      background-color: $grey-white;
+    }
+  }
+}
+// ===========================================================

@@ -1,0 +1,35 @@
+<section>
+    <div class="container">
+        <h2 class="section-heading">Mon dayte</h2>
+
+        <!-- if "search" is false, display the button to launch research (timer) -->
+        <div *ngIf="timerService.search==false; else noSearch">
+            <a class="btn btn-xl" (click)="timerService.startTimer()"> Trouver la personne qui me convient ! </a>
+        </div>
+
+        <!-- else, launch the timer -->
+        <ng-template #noSearch>
+            <!-- if matching found a person, display this -->
+            <div *ngIf="timerService.found==false; else find">
+                <p>
+                    Nous cherchons la personne qui vous correspondera au mieux !
+                </p>
+
+                <h4 style="padding-top: 1rem">
+                    Temps restant : <span style="color: #E3446C"> {{timerService.display}} </span>
+                </h4>
+
+            </div>
+
+            <!-- else, display this -->
+            <ng-template #find>
+                <p> Bonne nouvelle ! Nous avons trouvé LA personne qui vous correspond ! </p>
+                <div class="d-flex justify-content-center rdv">
+                    <span class="button"> <a class="btn btn-lg" role="button" routerLink="/home" (click)="timerService.search=false"> Annuler </a> </span>
+                    <span class="button"> <a class="btn btn-lg" role="button" routerLink="/dayte"> Prendre rendez-vous </a> </span>
+                </div>
+            </ng-template>
+        </ng-template>
+
+    </div>
+</section>

@@ -1,0 +1,289 @@
+<!-- Menu -->
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container-fluid">
+    <div>
+      <!-- 'Dayte': link to home -->
+      <a id="home" class="navbar-brand js-scroll-trigger" pageScroll [pageScrollDuration]="500" href="#top-page"> Dayte </a>
+      <!-- Responsive navbar button (burger menu) -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" pageScroll [pageScrollDuration]="500" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- Links in the navbar -->
+    <div class="part collapse navbar-collapse" id="navbarResponsive">
+      <ul class="nav navbar-nav ">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" pageScroll [pageScrollDuration]="500" href="#desc">Dayte, c'est quoi ?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" pageScroll [pageScrollDuration]="500" href="#how">Comment ça marche ?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" pageScroll [pageScrollDuration]="500" href="#date">Les rencontres</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" pageScroll [pageScrollDuration]="500" href="#partners">Nos partenaires</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Login/register button -->
+    <div class="logButton">
+      <a class="btn btn-send btn-md registerButton" role="button" (click)="showRegister()" pageScroll [pageScrollDuration]="500" href="#top-page"> Inscription </a>
+      <a class="btn btn-send btn-md loginButton" role="button" (click)="showLogin()" pageScroll [pageScrollDuration]="500" href="#top-page"> Connexion </a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Content -->
+<div class="split">
+  <header class="head" >
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center">
+
+        <!-- Screen for sign up -->
+        <div class="ecran" >
+          <form method="POST" class="signup" [formGroup]="registerForm" (ngSubmit)="onSubmitSignup()">
+            <div class="text-center">
+
+              <!-- Gender picker -->
+              <div>
+                <h3>Je suis</h3>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="gender" id="homme" value="Un homme">
+                  <label class="form-check-label" for="homme">
+                    <span class="fa-stack fa-3x">
+                      <i class="fas fa-circle circle fa-stack-2x"></i>
+                      <i class="people fas fa-male fa-stack-1x fa-inverse" title="Un homme"></i>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="gender" id="femme" value="Une femme">
+                  <label class="form-check-label" for="femme">
+                    <span class="fa-stack fa-3x">
+                      <i class="fas fa-circle circle fa-stack-2x"></i>
+                      <i class="people fas fa-female fa-stack-1x fa-inverse" title="Une femme"></i>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Gender searched picker -->
+              <div class="sexeR">
+                <h3>Je cherche</h3>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="genderSearch" id="hommeS" value="Un homme">
+                  <label class="form-check-label" for="hommeS">
+                    <span class="fa-stack fa-3x">
+                      <i class="fas fa-circle circle fa-stack-2x"></i>
+                      <i class="people fas fa-male fa-stack-1x fa-inverse" title="Un homme"></i>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="genderSearch" id="femmeS" value="Une femme">
+                  <label class="form-check-label" for="femmeS">
+                    <span class="fa-stack fa-3x">
+                      <i class="fas fa-circle circle fa-stack-2x"></i>
+                      <i class="people fas fa-female fa-stack-1x fa-inverse" title="Une femme"></i>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="genderSearch" id="both" value="Les deux">
+                  <label class="form-check-label" for="both">
+                    <span class="fa-stack fa-3x">
+                      <i class="fas fa-circle circle fa-stack-2x"></i>
+                      <i class="fas fa-restroom fa-stack-1x fa-inverse" title="Les deux"></i>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Email input -->
+            <div class="form-group">
+              <label for="email">Adresse e-mail</label>
+              <input id="email" type="email" class="form-control" [class.errorInput]="email.invalid && (email.dirty || email.touched)" formControlName="email">
+            </div>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+              <p>* Veuillez saisir une adresse e-mail valide.</p>
+            </div>
+
+            <!-- Password inputs (password & confirm password) -->
+            <div formGroupName="pwd" id="pwd">
+              <!-- Password input -->
+              <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" class="form-control" [class.errorInput]="password.invalid && (password.dirty || password.touched)"  formControlName="password">
+                <div class="eye"><i class="far fa-eye-slash"></i></div>
+              </div>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                <p>* Le mot de passe doit contenir au moins 8 caractères.</p>
+              </div>
+
+              <!-- Confirm password input -->
+              <div class="form-group">
+                <label for="passwordC">Confirmer le mot de passe</label>
+                <input id="passwordC" type="password" class="form-control" [class.errorInput]="password.value != confirmPassword.value && (confirmPassword.dirty ||confirmPassword.touched)" formControlName="confirmPassword">
+              </div>
+              <div *ngIf="password.value != confirmPassword.value && (confirmPassword.dirty || confirmPassword.touched)">
+                <p>* Les mots de passe ne correspondent pas.</p>
+              </div>
+            </div>
+
+            <!-- Button to go to the questionnaire -->
+            <div class="text-center">
+              <button [disabled]="registerForm.invalid" class="btn btn-xl" type="submit" name="send">Continuer</button>
+            </div>
+          </form>
+        </div>
+
+
+        <!-- If "login" is true, a screen for sign in appears -->
+        <div *ngIf="login">
+          <div [class.popupBackground]="login">
+            <div class="ecranLogin">
+              <form method="POST" class="login" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+                <div class="text-center">
+                  <h2>Connexion</h2>
+                </div>
+                <div class="loginForm">
+                  <!-- Email input -->
+                  <div class="form-group">
+                    <input type="email" class="form-control" formControlName="emailLogin" placeholder="Adresse e-mail">
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-group">
+                    <input type="password" class="form-control" formControlName="passwordLogin" placeholder="Mot de passe">
+                  </div>
+                </div>
+
+                <!-- Forgotten password -->
+                <div class="text-right">
+                  <a href="" class="forgotPwd">Mot de passe oublié ?</a>
+                </div>
+
+                <div class="row text-center loginFormButtons">
+                  <!-- Back button (close sign in screen) -->
+                  <div class="col-md-6 back">
+                    <a class="btn btn-send btn-md registerButton" role="button" (click)="showRegister()" pageScroll [pageScrollDuration]="500" href="#top-page"> Retour </a>
+                  </div>
+                  <!-- Button to connect (redirect to /home route) -->
+                  <div class="col-md-6">
+                      <button [disabled]="loginForm.invalid" class="btn btn-xl" type="submit" name="send">Connexion</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <!-- Description -->
+    <section id="desc">
+      <div class="container">
+        <h2 class="section-heading">Dayte, c'est quoi ?</h2>
+        <p>
+          Nous vous souhaitons la bienvenue sur Dayte, l’application pour faire de vraies rencontres !
+        </p>
+        <p>
+          Notre objectif : créer de vraies rencontres entre les personnes en espérant qu’elles puissent trouver l’amour.
+        </p>
+        <p>
+          Grâce à notre site web et application mobile, créez-vous un profil, organiser une rencontre, et laissez-nous faire le reste.
+        </p>
+      </div>
+    </section>
+
+    <!-- Comment ça marche ? -->
+    <section id="how">
+      <div class="container">
+        <h2 class="section-heading">Comment procède-t-on ?</h2>
+        <p>
+          Notre robot intelligent permet de rassembler les personnes les plus compatible pour leur permettre d’avoir une chance de se rencontrer !
+        </p>
+        <p>
+          Pour cela, rien de plus simple, complétez votre profil et soyez patient !
+        </p>
+        <p>
+          Quelques jours après, vous aurez peut-être un Dayte en vous connectant.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Les rencontres -->
+    <section id="date">
+      <div class="container">
+        <h2 class="section-heading">Les rencontres</h2>
+        <p>
+          Une fois que l’IA vous a trouvé une personne compatible, il est temps de sortir la rencontrer !
+        </p>
+        <p>
+          Renseignez vos disponibilités (date et heure) et proposer un lieu de rencontre.
+        </p>
+        <p>
+          Toutefois une non-présentation à la rencontre, non prévenue, peut être passible de sanctions (comme un bannissement temporaire ou définitif du compte).
+        </p>
+        <p>
+          Donc faîtes attention, et soyez galant !
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Partenaires -->
+    <section id="partners">
+      <div class="container">
+        <h2 class="section-heading">Nos partenaires</h2>
+        <p>
+        </p>
+      </div>
+    </section>
+
+
+
+    <footer class="bg-dark text-white-50">
+      <!-- Top page button (from end page) -->
+      <div class="end-top">
+        <a class="fas fa-chevron-up text-center js-scroll-trigger" pageScroll [pageScrollDuration]="500" href="#top-page"></a>
+      </div>
+
+      <div class="container text-center">
+        <ul class="list-unstyled socialI">
+          <!-- Copyright mention -->
+          <li>
+            <small> &copy; 2020 Dayte</small>
+          </li>
+          <!-- Social networks links -->
+          <li>
+            <ul class="list-inline">
+              <li class="list-inline-item fb">
+                <a class="fab fa-facebook-f" href="https://www.facebook.com/daytecontact/" target="_blank"></a>
+              </li>
+              <li class="list-inline-item twitter">
+                <a class="fab fa-twitter" href="https://twitter.com/daytecontact" target="_blank"></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</div>
+
+
+<!-- Top page button (from current position) -->
+<div id="scrollUp">
+  <a class="fas fa-chevron-up current-top js-scroll-trigger" pageScroll [pageScrollDuration]="500" href="#top-page"></a>
+</div>
+

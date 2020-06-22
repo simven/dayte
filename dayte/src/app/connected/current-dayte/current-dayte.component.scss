@@ -1,0 +1,64 @@
+@import "~node_modules/bootstrap/scss/_functions.scss";
+@import "~node_modules/bootstrap/scss/_variables.scss";
+@import "~node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "~src/assets/global";
+
+
+// ====================== Input design =====================
+form {
+  font-family: 'Roboto', sans-serif;
+  // error design
+  p {
+    font-size: 0.8rem;
+    color: $red-error-text;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+}
+// =========================================================
+
+
+// ===================== Input design ======================
+.dayte-element {
+  padding: 1.6rem 0 5rem;
+  width: 70%;
+  margin: auto;
+  @include media-breakpoint-up(md) {
+    padding: 3rem 0 5rem;
+
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 5rem 0;
+
+  }
+}
+// =========================================================
+
+
+// ==================== Button design ======================
+.btn {
+  font-size: 1.5rem;
+}
+
+
+// ==============nDate & clock picker design ===============
+.e-date-wrapper.e-custom-style .e-input-group-icon.e-date-icon.e-icons.e-active,
+.e-date-wrapper.e-custom-style .e-input-group-icon.e-date-icon.e-icons,
+.e-date-wrapper.e-custom-style .e-input {
+  color: $main;
+}
+
+.e-input-group .e-input-group-icon, .e-input-group.e-control-wrapper .e-input-group-icon {
+  color: $main;
+}
+
+.e-float-input {
+  margin-top: 0;
+}
+// =========================================================
+
+
+// ================= Clock picker design ===================
+.clockpicker {
+  width: 224px;
+}

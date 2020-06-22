@@ -1,0 +1,180 @@
+
+// VARIABLES \\
+$light-main: rgba(246, 87, 125, 0.84);
+$main: #E3446C;
+$red-error: #e21a17;
+$red-error-text: #cb0e0b;
+$white: #ffffff;
+$grey-white: #e0e0e0;
+$light-grey: #f2f2f2;
+$grey: #cccccc;
+$dark-blue: #25304b;
+$dark: #353a3f;
+$light-black: #222529;
+
+
+// GLOBAL \\
+
+.page {
+  background-color: $dark;
+  font-family: "Roboto", "Roboto";
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+.h1, .h2, .h3 {
+  font-family: "Montserrat", "Montserrat-Regular";
+  color: $dark-blue;
+}
+
+.h1 {
+  font-size: 60;
+  color: $main;
+  margin-top: 5%;
+}
+
+.h2 {
+  font-size: 30;
+}
+
+.h3 {
+  font-size: 25;
+}
+
+.btn {
+  font-family: "Montserrat", "Montserrat-Regular";
+  background-color: $light-main !important;
+  color: $white !important;
+  box-shadow: none;
+  border-radius: 25;
+  font-size: 20;
+  padding: 10;
+}
+
+
+// ====================Eye to see password======================
+.eye {
+  font-size: 20;
+  transform: translate(0, 15px);
+  color: $dark-blue;
+}
+
+
+// =================Style for errors in forms===================
+.error {
+  color: $red-error;
+  margin-left: 15;
+}
+
+
+// Connection \\
+
+.connection {
+  margin-top: 30%;
+}
+
+.input-connection {
+  color: $white;
+  font-size: 17;
+  placeholder-color: $white;
+  font-family: "Roboto", "Roboto";
+}
+
+.btn-login {
+  margin-top: 5%;
+}
+
+.button-create-account {
+  margin-bottom: 35;
+}
+
+.text-white {
+  color: $white;
+}
+
+
+
+// Register popup \\
+
+@keyframes show-popup {
+  from { transform: translate(0, 500); opacity: 0; }
+  to { transform: none; opacity: 1;}
+}
+
+.popupOpen .content {
+  visibility: collapse;
+  opacity: 0.1;
+}
+
+.popupOpen .popup-wrapper {
+  visibility: visible;
+  animation-name: show-popup;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.popupOpen .connection {
+  visibility: hidden;
+}
+
+.popup-wrapper {
+  visibility: collapse;
+  opacity: 0;
+}
+
+.register-screen {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 20;
+}
+
+.register {
+  Label {
+    margin: 0 17 15 17;
+  }
+}
+
+
+// =================Register: content (all)===================
+.register {
+  margin-top: 35;
+}
+
+
+// ============Register: content (except title)===============
+.register-form {
+  margin-top: 20;
+}
+
+
+// ==================Register: icons gender===================
+.people {
+  color: $dark;
+  font-size: 65;
+}
+
+.selected {
+  color: $main;
+}
+
+
+// ===================Register: input style====================
+.input-register {
+  color: $dark-blue;
+  font-size: 17;
+  placeholder-color: $dark-blue;
+  margin-top: 10;
+}
+
+
+// ================Register: bottom's buttons==================
+.buttons-register {
+  margin-top: 50;
+  .btn {
+    padding: 0 20;
+  }
+}
